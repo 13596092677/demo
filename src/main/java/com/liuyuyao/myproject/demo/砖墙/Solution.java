@@ -1,9 +1,6 @@
 package com.liuyuyao.myproject.demo.砖墙;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author : mi
@@ -20,45 +17,37 @@ import java.util.List;
  */
 public class Solution {
     public int leastBricks(List<List<Integer>> wall) {
-        if (wall.size() == 0) {
-            return 0;
+        Map<Integer, Integer> timesMap = new HashMap<>();
+        for (List<Integer> list : wall) {
+            int total = 0;
+            for (int i = 0; i < list.size() - 1; i++) {
+                total += list.get(i);
+                if (timesMap.containsKey(total)) {
+                    timesMap.put(total, timesMap.get(total) + 1);
+                } else timesMap.put(total, 1);
+            }
         }
-        int col = 0;
+        int len = 0;
         for (int i = 0; i < wall.get(0).size(); i++) {
-            col += wall.get(0).get(i);
+            len += wall.get(0).get(i);
         }
-        if (col == 1) {
-            return wall.size();
-        }
-        if (col == 100000000) {
-            return wall.size();
-        }
-        long[][] dp = new long[wall.size() + 1][col + 1];
-        for (int i = 1; i < wall.size() + 1; i++) {
-            List<Integer> limit = new ArrayList<>();
-            for (int k = 0; k < wall.get(i - 1).size(); k++) {
-                limit.add(k, k == 0 ? wall.get(i - 1).get(k) : limit.get(k - 1) + wall.get(i - 1).get(k));
-            }
-            for (int j = 1; j < col + 1; j++) {
-                dp[i][j] = dp[i-1][j] + (limit.contains(j) ? 0 : 1);
-            }
-        }
-        int result = Integer.MAX_VALUE;
-        for (int i = 1; i < col; i++) {
-            result = Math.min((int)dp[wall.size()][i], result);
+        int result = wall.size();
+        for (Integer key : timesMap.keySet()) {
+            Integer integer = timesMap.get(key);
+            result = Math.min(result, wall.size() - integer);
         }
         return result;
     }
 
     public static void main(String[] args) {
         Solution solution = new Solution();
-        List<Integer> list1 = Arrays.asList(100000000);
-        List<Integer> list2 = Arrays.asList(100000000);
-        List<Integer> list3 = Arrays.asList(100000000);
-//        List<Integer> list4 = Arrays.asList(2, 4);
-//        List<Integer> list5 = Arrays.asList(3, 1, 2);
-//        List<Integer> list6 = Arrays.asList(1, 3, 1, 1);
-        int result = solution.leastBricks(Arrays.asList(list1, list2, list3));
+        List<Integer> list1 = Arrays.asList(1, 2, 2, 1);
+        List<Integer> list2 = Arrays.asList(3, 1, 2);
+        List<Integer> list3 = Arrays.asList(1, 3, 2);
+        List<Integer> list4 = Arrays.asList(2, 4);
+        List<Integer> list5 = Arrays.asList(3, 1, 2);
+        List<Integer> list6 = Arrays.asList(1, 3, 1, 1);
+        int result = solution.leastBricks(Arrays.asList(list1, list2, list3, list4, list5, list6));
         System.out.println(result);
     }
 }
