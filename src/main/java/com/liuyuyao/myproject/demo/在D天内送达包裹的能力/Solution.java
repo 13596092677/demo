@@ -23,11 +23,11 @@ public class Solution {
         int low = Arrays.stream(weights).max().getAsInt();
         int height = Arrays.stream(weights).sum();
         int result = height;
-        while (low < height) {
+        while (low <= height) {
             int mid = (low + height) / 2;
             if (check(weights, mid, days)) {
                 result = mid;
-                height = mid;
+                height = mid - 1;
             } else {
                 low = mid + 1;
             }
