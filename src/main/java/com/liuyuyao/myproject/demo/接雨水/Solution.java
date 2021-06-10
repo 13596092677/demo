@@ -1,4 +1,4 @@
-package 接雨水;
+package com.liuyuyao.myproject.demo.接雨水;
 
 import java.util.Stack;
 
@@ -6,6 +6,8 @@ import java.util.Stack;
  * @author ：lyy
  * @date ：Created in 2021/6/5 10:47 下午
  * @description：给定 n 个非负整数表示每个宽度为 1 的柱子的高度图，计算按此排列的柱子，下雨之后能接多少雨水。
+ *
+ *
  *
  */
 public class Solution {

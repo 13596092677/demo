@@ -35,7 +35,7 @@ public class Solution {
     }
     public static void main(String[] args) {
         Solution solution = new Solution();
-        int res = solution.numWays(27, 7);
+        int res = solution.numWays(3, 3);
         System.out.println(res);
     }
 }
