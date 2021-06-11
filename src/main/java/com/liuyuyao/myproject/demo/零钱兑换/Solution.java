@@ -39,10 +39,38 @@ public class Solution {
         }
         return dp[coins.length - 1][amount];
     }
+    public int coinChange1(int[] coins, int amount) {
+        int[] dp = new int[amount + 1];
+        // 记录每种币的数量
+        int[][] cnt = new int[amount + 1][coins.length];
+        Arrays.fill(dp, -1);
+        dp[0] = 0;
+        for (int i = 1; i <= amount; i++) {
+            for (int j = 0; j < coins.length; j++) {
+                if (i >= coins[j] && dp[i - coins[j]] != -1) {
+                    if (dp[i] == -1) {
+                        for (int k = 0; k < coins.length; k++) {
+                            cnt[i][k] = cnt[i - coins[j]][k];
+                        }
+                        cnt[i][j]++;
+                    } else{
+                        if (dp[i - coins[j]] + 1 <= dp[i]) {
+                            for (int k = 0; k < coins.length; k++) {
+                                cnt[i][k] = cnt[i - coins[j]][k];
+                            }
+                            cnt[i][j]++;
+                        }
+                    }
+                    dp[i] = dp[i] == -1 ? dp[i - coins[j]] + 1 : Math.min(dp[i], dp[i - coins[j]] + 1);
+                }
+            }
+        }
+        return dp[amount];
+    }
 
     public static void main(String[] args) {
         Solution solution = new Solution();
-        int res = solution.coinChange(new int[]{2, 5, 10, 1}, 27);
+        int res = solution.coinChange1(new int[]{186, 419, 83, 408}, 6249);
         System.out.println(res);
     }
 }
