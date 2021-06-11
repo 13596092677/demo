@@ -33,7 +33,7 @@ public class Solution {
         // 比如测试用例中,先取面额为1,再取面额为2,以此类推
         // 如果两层循环顺序颠倒,会出现例如 1+2和2+1计算为两种方案的情况
         for (int coin : coins) {
-            for (int i = 0; i <= amount; i++) {
+            for (int i = coin; i <= amount; i++) {
                 dp[i] += dp[i - coin];
             }
         }
