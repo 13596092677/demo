@@ -59,9 +59,51 @@ public class Solution {
         return res;
     }
 
+    public String modifyString(String s) {
+        if(s == null || s.isEmpty()) return null;
+        if(s.length() == 1){
+            if(s.equals("?")){
+                return "a";
+            }else {
+                return s;
+            }
+        }
+        StringBuffer result = new StringBuffer(s);
+        for(int i = 0; i < result.length(); i++){
+            if(result.charAt(i) != '?') continue;
+            if(i == 0){
+                for(char j = 'a'; j <= 'z'; j++){
+                    if(result.charAt(i+1) != j){
+                        result.setCharAt(i, j);
+                        break;
+                    }
+                }
+            }else if(i == result.length()-1){
+                for(char j = 'a'; j <= 'z'; j++){
+                    if(result.charAt(i-1) != j){
+                        result.setCharAt(i, j);
+                        break;
+                    }
+                }
+            }else{
+                for(char j = 'a'; j <= 'z'; j++){
+                    if(result.charAt(i-1) != j && result.charAt(i+1) != j){
+                        result.setCharAt(i, j);
+                        break;
+                    }
+                }
+            }
+        }
+        return result.toString();
+    }
+
+
+
     public static void main(String[] args) {
         Solution solution = new Solution();
         int res = solution.findMaxForm(new String[]{"10", "0", "1"}, 1, 1);
         System.out.println(res);
     }
+
+
 }

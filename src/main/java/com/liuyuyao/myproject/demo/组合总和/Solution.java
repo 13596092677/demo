@@ -22,7 +22,6 @@ import java.util.List;
  */
 public class Solution {
     public List<List<Integer>> combinationSum(int[] candidates, int target) {
-        List<List<Integer>> res = new ArrayList<>();
         List[] resDp = new List[target+1];
         for (int i = 0; i <= target; i++) {
             resDp[i] = new ArrayList<ArrayList<Integer>>();
