@@ -39,7 +39,7 @@ public class Solution1 {
 
     public static void main(String[] args) {
         Solution1 solution1 = new Solution1();
-        solution1.combinationSum2(new int[]{2,5,2,1,2}, 8);
-        System.out.println(solution1.ans);
+        List<List<Integer>> res = solution1.combinationSum2(new int[]{2, 5, 2, 1, 2}, 8);
+        System.out.println(res);
     }
 }
