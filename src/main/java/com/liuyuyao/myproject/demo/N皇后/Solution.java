@@ -25,7 +25,7 @@ public class Solution {
         // 对每一行进行遍历
         for (int i = 0; i < n; i++) {
             // 判断当前位置是否有效
-            if (!isValid(pos, idx, i)) {
+            if (!isValid(idx, i)) {
                 continue;
             }
             StringBuffer sb = new StringBuffer();
@@ -41,7 +41,7 @@ public class Solution {
         }
     }
 
-    boolean isValid(List<Integer> pos, int level, int curr) {
+    boolean isValid(int level, int curr) {
         for (int i = 0; i < pos.size(); i++) {
             // 同列冲突
             if (curr == pos.get(i)) {
