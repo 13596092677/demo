@@ -1,4 +1,4 @@
-package 全排列II;
+package com.liuyuyao.myproject.demo.全排列II;
 
 import java.util.ArrayList;
 import java.util.Arrays;
