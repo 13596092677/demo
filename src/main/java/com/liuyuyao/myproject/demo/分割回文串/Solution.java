@@ -78,7 +78,7 @@ public class Solution {
 
     public static void main(String[] args) {
         Solution solution = new Solution();
-        List<List<String>> res = solution.partition("abbab");
+        List<List<String>> res = solution.partition("abcbcbabcbaabcbcbabcbaabcbcbabcbaabcbcba");
         System.out.println(res);
     }
 }
