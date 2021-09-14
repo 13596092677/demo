@@ -32,10 +32,7 @@ public class Solution {
     }
 
     int getBitCount(int n) {
-        if (n == 0) {
-            return 1;
-        }
-        int cnt = 0;
+        int cnt = 1;
         while (true) {
             if (n < (int) Math.pow(2, cnt)) {
                 return cnt;
