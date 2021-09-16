@@ -13,38 +13,61 @@ import java.util.List;
 public class Solution {
     List<Integer> sequence = new ArrayList<>();
     List<Integer> ans;
+    int[] copy;
     public int[] constructDistancedSequence(int n) {
-        int[] rest = new int[n + 1];
-        int[] last = new int[n + 1];
-        int[] copy = new int[2 * n - 1];
-        Arrays.fill(rest, 2);
-        rest[1] = 1;
-        Arrays.fill(last, -1);
-        dfs(n, 0, rest, last);
+        copy = new int[2 * n - 1];
+        boolean[] visited = new boolean[n + 1];
+        for (int i = 0; i < 2 * n - 1; i++) {
+            sequence.add(-1);
+        }
+        dfs(n, visited, 0);
         for (int i = 0; i < ans.size(); i++) {
             copy[i] = ans.get(i);
         }
         return copy;
     }
 
-    boolean dfs(int n, int idx, int[] rest, int[] last) {
-        if (idx == 2 * n - 1) {
+    boolean dfs(int n, boolean[] visited, int len) {
+        if (len == 2 * n - 1) {
             ans = new ArrayList<>(sequence);
             System.out.println(ans);
             return true;
         }
-        for (int i = n; i > 0; i--) {
-            if (rest[i] > 0 && (last[i] == -1 || Math.abs(last[i] - idx) == i)) {
-                int copy = last[i];
-                rest[i] = rest[i] - 1;
-                last[i] = idx;
-                sequence.add(i);
-                boolean res = dfs(n, idx + 1, rest, last);
-                rest[i] = rest[i] + 1;
-                last[i] = copy;
-                sequence.remove(sequence.size() - 1);
-                if (res) {
-                    return true;
+        for (int i = 0; i < 2 * n - 1; i++) {
+            // 找到某一位置没有放过数
+            if (sequence.get(i) != -1) {
+                continue;
+            }
+            for (int j = n; j > 0; j--) {
+                if (visited[j]) {
+                    continue;
+                }
+                if (j == 1) {
+                    sequence.set(i, j);
+                    visited[j] = true;
+                    boolean res = dfs(n, visited, len + 1);
+                    sequence.set(i, -1);
+                    visited[j] = false;
+                    if (res) {
+                        return true;
+                    }
+                } else{
+                    if (i + j >= 2 * n - 1) {
+                        continue;
+                    }
+                    if (sequence.get(i + j) != -1) {
+                        continue;
+                    }
+                    sequence.set(i, j);
+                    sequence.set(i + j, j);
+                    visited[j] = true;
+                    boolean res = dfs(n, visited, len + 2);
+                    sequence.set(i, -1);
+                    sequence.set(i + j, -1);
+                    visited[j] = false;
+                    if (res) {
+                        return true;
+                    }
                 }
             }
         }
@@ -53,7 +76,7 @@ public class Solution {
 
     public static void main(String[] args) {
         Solution solution = new Solution();
-        int[] res = solution.constructDistancedSequence(12);
+        int[] res = solution.constructDistancedSequence(17);
         System.out.println(res);
     }
 }
