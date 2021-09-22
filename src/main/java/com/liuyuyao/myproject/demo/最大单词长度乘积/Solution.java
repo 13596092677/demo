@@ -12,7 +12,7 @@ public class Solution {
             for (int j = 0; j < words[i].length(); j++) {
                 // 判断当前字符是否已存在过，若存在过则跳过
                 if ((mask[i] >> words[i].charAt(j) - 'a' & 1) == 0) {
-                    mask[i] += Math.pow(2, words[i].charAt(j) - 'a');
+                    mask[i] |= 1 << words[i].charAt(j) - 'a';
                 }
             }
         }
