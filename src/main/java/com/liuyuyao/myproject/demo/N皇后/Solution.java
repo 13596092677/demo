@@ -59,5 +59,6 @@ public class Solution {
         Solution solution = new Solution();
         List<List<String>> res = solution.solveNQueens(5);
         System.out.println(res);
+        System.out.println("copy");
     }
 }
