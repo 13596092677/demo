@@ -7,19 +7,19 @@ package com.liuyuyao.myproject.demo.最大单词长度乘积;
  */
 public class Solution {
     public int maxProduct(String[] words) {
-        int[] mask = new int[words.length];
+        int[] masks = new int[words.length];
         for (int i = 0; i < words.length; i++) {
             for (int j = 0; j < words[i].length(); j++) {
                 // 判断当前字符是否已存在过，若存在过则跳过
-                if ((mask[i] >> words[i].charAt(j) - 'a' & 1) == 0) {
-                    mask[i] |= 1 << words[i].charAt(j) - 'a';
+                if ((masks[i] >> words[i].charAt(j) - 'a' & 1) == 0) {
+                    masks[i] |= 1 << words[i].charAt(j) - 'a';
                 }
             }
         }
         int res = 0;
-        for (int i = 0; i < mask.length; i++) {
-            for (int j = i + 1; j < mask.length; j++) {
-                if ((mask[i] & mask[j]) == 0) {
+        for (int i = 0; i < masks.length; i++) {
+            for (int j = i + 1; j < masks.length; j++) {
+                if ((masks[i] & masks[j]) == 0) {
                     res = Math.max(res, words[i].length() * words[j].length());
                 }
             }
