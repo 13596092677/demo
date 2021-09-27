@@ -60,5 +60,6 @@ public class Solution {
         List<List<String>> res = solution.solveNQueens(5);
         System.out.println(res);
         System.out.println("copy");
+        System.out.println("copy2");
     }
 }
