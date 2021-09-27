@@ -32,5 +32,6 @@ public class Solution {
         Solution solution = new Solution();
         long res = solution.wonderfulSubstrings("aabb");
         System.out.println(res);
+        System.out.println("commit1");
     }
 }
