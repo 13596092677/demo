@@ -24,7 +24,7 @@ public class Solution {
                 return ch;
             }
         }
-        return ch;
+        return 'a';
     }
 
     public static void main(String[] args) {
