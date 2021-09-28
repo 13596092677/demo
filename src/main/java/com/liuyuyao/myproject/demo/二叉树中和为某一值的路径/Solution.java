@@ -6,28 +6,11 @@ package com.liuyuyao.myproject.demo.二叉树中和为某一值的路径;
  * @description:
  */
 
+import com.liuyuyao.myproject.demo.TreeNode.TreeNode;
+
 import javax.jws.soap.SOAPBinding;
 import java.util.ArrayList;
 import java.util.List;
-
-class TreeNode {
-    int val;
-    TreeNode left;
-    TreeNode right;
-
-    TreeNode() {
-    }
-
-    TreeNode(int val) {
-        this.val = val;
-    }
-
-    TreeNode(int val, TreeNode left, TreeNode right) {
-        this.val = val;
-        this.left = left;
-        this.right = right;
-    }
-}
 
 class Solution {
     List<List<Integer>> res = new ArrayList<>();

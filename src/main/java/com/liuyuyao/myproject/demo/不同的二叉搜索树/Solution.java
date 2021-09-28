@@ -1,5 +1,7 @@
 package com.liuyuyao.myproject.demo.不同的二叉搜索树;
 
+import com.liuyuyao.myproject.demo.TreeNode.TreeNode;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
