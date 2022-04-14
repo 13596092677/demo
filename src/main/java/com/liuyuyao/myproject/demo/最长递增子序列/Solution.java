@@ -51,7 +51,7 @@ public class Solution {
 
     public static void main(String[] args) {
         Solution solution = new Solution();
-        int res = solution.lengthOfLIS(new int[]{0, 1, 0, 3, 2, 3});
+        int res = solution.lengthOfLIS(new int[]{1, 2, 4, 3, 5, 4, 7, 2});
         System.out.println(res);
     }
 }
