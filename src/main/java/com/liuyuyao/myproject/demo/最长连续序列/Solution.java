@@ -22,8 +22,8 @@ public class Solution {
         }
         int temp = 1;
         for (int i = 0; i < nums.length; i++) {
-            int cur = nums[i];
-            while (hashSet.contains(cur + 1)) {
+            int cur = nums[i] + 1;
+            while (hashSet.contains(cur)) {
                 cur++;
                 temp++;
             }
