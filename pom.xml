@@ -97,21 +97,18 @@
             <id>dev</id>
             <properties>
                 <profiles.active>dev</profiles.active>
-                <server.port>4000</server.port>
             </properties>
         </profile>
         <profile>
             <id>preview</id>
             <properties>
                 <profiles.active>preview</profiles.active>
-                <server.port>4001</server.port>
             </properties>
         </profile>
         <profile>
             <id>production</id>
             <properties>
                 <profiles.active>production</profiles.active>
-                <server.port>4002</server.port>
             </properties>
         </profile>
     </profiles>

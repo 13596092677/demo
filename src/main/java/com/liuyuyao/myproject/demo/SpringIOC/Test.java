@@ -15,7 +15,6 @@ import java.util.Arrays;
  * @date ：Created in 2021/8/5 4:46 下午
  * @description：
  */
-@SpringBootApplication
 public class Test {
     public static void main(String[] args) {
         // AnnotationConfigApplicationContext是Spring用来专门针对注解开发的ApplicationContext子类
