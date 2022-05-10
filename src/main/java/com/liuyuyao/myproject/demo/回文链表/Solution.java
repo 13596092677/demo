@@ -7,14 +7,14 @@ import java.util.Stack;
  * @date ：Created in 2022/4/7 下午4:35
  * @description：
  */
+class ListNode {
+    int val;
+    ListNode next;
+    ListNode() {}
+    ListNode(int val) { this.val = val; }
+    ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+}
 public class Solution {
-    public class ListNode {
-        int val;
-        ListNode next;
-        ListNode() {}
-        ListNode(int val) { this.val = val; }
-        ListNode(int val, ListNode next) { this.val = val; this.next = next; }
-    }
     public boolean isPalindrome(ListNode head) {
         Stack<Integer> stack = new Stack<>();
         int cnt = 0;

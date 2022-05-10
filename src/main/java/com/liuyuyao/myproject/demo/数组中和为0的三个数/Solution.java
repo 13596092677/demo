@@ -14,30 +14,48 @@ public class Solution {
     List<Integer> list = new ArrayList<>();
     public List<List<Integer>> threeSum(int[] nums) {
         Arrays.sort(nums);
-        dfs(nums, 0, 0,false);
+        List<Integer> list = new ArrayList<>();
+        List<List<Integer>> ans = new ArrayList<>();
+        int base = 0;
+        while (base < nums.length) {
+            int left = base + 1;
+            int right = nums.length - 1;
+            if (base > 0 && nums[base - 1] == nums[base]) {
+                ++base;
+                continue;
+            }
+            while (left < right) {
+                if (left > base + 1 && nums[left - 1] == nums[left]) {
+                    ++left;
+                    continue;
+                }
+                if (right < nums.length - 1 && nums[right + 1] == nums[right]) {
+                    --right;
+                    continue;
+                }
+                if (nums[base] + nums[left] + nums[right] == 0) {
+                    list.add(nums[base]);
+                    list.add(nums[left]);
+                    list.add(nums[right]);
+                    ans.add(new ArrayList<>(list));
+                    list = new ArrayList<>();
+                    ++left;
+                    --right;
+                } else if (nums[base] + nums[left] + nums[right] < 0) {
+                    ++left;
+                } else {
+                    --right;
+                }
+            }
+            ++base;
+        }
         return ans;
     }
 
-    void dfs(int[] nums, int idx, int target, boolean choosePre) {
-        if (list.size() == 3 && target == 0) {
-            ans.add(new ArrayList<>(list));
-            return;
-        }
-        if (idx == nums.length) {
-            return;
-        }
-        dfs(nums, idx + 1, target, false);
-        if (!choosePre && idx > 0 && nums[idx] == nums[idx - 1]) {
-            return;
-        }
-        list.add(nums[idx]);
-        dfs(nums, idx + 1, target - nums[idx], true);
-        list.remove(list.size() - 1);
-    }
 
     public static void main(String[] args) {
         Solution solution = new Solution();
-        List<List<Integer>> res = solution.threeSum(new int[]{-1, 0, 1, 2, -1, -4});
+        List<List<Integer>> res = solution.threeSum(new int[]{-2, 0, 0, 2, 2});
         System.out.println(res);
     }
 }
